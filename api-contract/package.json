@@ -1,0 +1,21 @@
+{
+  "name": "cafeit-api-contract",
+  "version": "1.0.0",
+  "description": "API contract generation for Cafeit platform",
+  "scripts": {
+    "generate:typescript": "openapi-typescript openapi.yaml -o generated/types.ts",
+    "generate:client": "@openapitools/openapi-generator-cli generate -i openapi.yaml -g typescript-fetch -o generated/client",
+    "generate:server": "@openapitools/openapi-generator-cli generate -i openapi.yaml -g typescript-nestjs -o generated/server",
+    "generate:desktop": "echo not implemented",
+    "generate:all": "npm run generate:typescript && npm run generate:client && npm run generate:server",
+    "visualize": "swagger-cli bundle openapi.yaml -o generated/swagger.json && npx swagger-ui-serve generated/swagger.json"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^6.7.4",
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "swagger-cli": "^4.0.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
