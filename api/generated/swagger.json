@@ -1,0 +1,361 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Cafeit Client API",
+    "description": "Real-time cafe seat availability platform API for client applications",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Cafeit Team"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api",
+      "description": "Development server"
+    },
+    {
+      "url": "https://api.cafeit.com/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/cafes": {
+      "get": {
+        "operationId": "getNearbyCafes",
+        "summary": "Get nearby cafes",
+        "description": "Retrieve list of nearby cafes based on user location",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Location"
+          },
+          {
+            "$ref": "#/components/parameters/Radius"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of nearby cafes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cafe"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/cafes/{cafeId}": {
+      "get": {
+        "operationId": "getCafeById",
+        "summary": "Get cafe details",
+        "description": "Get detailed information about a specific cafe",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CafeId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cafe details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cafe"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/cafes/{cafeId}/seats-availability": {
+      "get": {
+        "operationId": "getCafeSeatsById",
+        "summary": "Get cafe seat availability",
+        "description": "Get the current seat availability for a cafe",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CafeId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Seat availability",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeatAvailability"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "CafeId": {
+        "name": "cafeId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Location": {
+        "name": "location",
+        "in": "query",
+        "description": "User's current location",
+        "schema": {
+          "$ref": "#/components/schemas/Location"
+        }
+      },
+      "Radius": {
+        "name": "radius",
+        "in": "query",
+        "description": "Search radius in kilometers",
+        "schema": {
+          "type": "number",
+          "default": 3,
+          "minimum": 0.1,
+          "maximum": 30
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Cafe not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "details": {
+            "type": "object",
+            "description": "Additional error details"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "Cafe": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "seatAvailability": {
+            "$ref": "#/components/schemas/SeatAvailability"
+          },
+          "storeInformation": {
+            "$ref": "#/components/schemas/StoreInformation"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "amenities": {
+            "$ref": "#/components/schemas/Amenities"
+          }
+        },
+        "required": [
+          "id",
+          "seatAvailability"
+        ]
+      },
+      "SeatAvailability": {
+        "type": "object",
+        "properties": {
+          "totalSeats": {
+            "type": "number",
+            "description": "Total number of seats in the cafe"
+          },
+          "availableSeats": {
+            "type": "number",
+            "description": "Number of currently available seats"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last time seat status was updated"
+          }
+        },
+        "required": [
+          "totalSeats",
+          "availableSeats",
+          "lastUpdated"
+        ]
+      },
+      "StoreInformation": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the cafe"
+          },
+          "address": {
+            "type": "string",
+            "description": "Physical address of the cafe"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "hours": {
+            "$ref": "#/components/schemas/OperatingHours"
+          },
+          "links": {
+            "$ref": "#/components/schemas/StoreLinks"
+          }
+        },
+        "required": [
+          "name",
+          "address",
+          "location",
+          "hours",
+          "links"
+        ]
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "description": "Latitude coordinate"
+          },
+          "lng": {
+            "type": "number",
+            "description": "Longitude coordinate"
+          }
+        },
+        "required": [
+          "lat",
+          "lng"
+        ]
+      },
+      "OperatingHours": {
+        "type": "object",
+        "properties": {
+          "startTime": {
+            "type": "string",
+            "format": "time",
+            "description": "Opening time (HH:MM format)",
+            "example": "07:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "time",
+            "description": "Closing time (HH:MM format)",
+            "example": "18:00"
+          }
+        },
+        "required": [
+          "startTime",
+          "endTime"
+        ]
+      },
+      "StoreLinks": {
+        "type": "object",
+        "properties": {
+          "mapUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the cafe's location on map services",
+            "example": "https://maps.google.com/?q=123+Main+St"
+          }
+        },
+        "required": [
+          "mapUrl"
+        ]
+      },
+      "Amenities": {
+        "type": "object",
+        "properties": {
+          "hasWifi": {
+            "type": "boolean"
+          },
+          "hasOutlets": {
+            "type": "boolean"
+          },
+          "noiseLevel": {
+            "type": "string",
+            "enum": [
+              "quiet",
+              "moderate",
+              "loud"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

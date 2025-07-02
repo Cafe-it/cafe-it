@@ -1,0 +1,5 @@
+# Cursor IDE settings
+.cursorrules
+.cursor/
+
+node_modules
