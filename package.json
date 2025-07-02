@@ -1,0 +1,13 @@
+{
+  "name": "cafeit-repo",
+  "version": "1.0.0",
+  "workspaces": [
+    "api",
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "api:generate": "pnpm --filter @cafeit/api run generate:all",
+    "api:visualize": "pnpm --filter @cafeit/api run visualize"
+  }
+}

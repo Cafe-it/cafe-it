@@ -1,0 +1,14 @@
+.openapi-generator-ignore
+apis/DefaultApi.ts
+apis/index.ts
+index.ts
+models/Amenities.ts
+models/Cafe.ts
+models/Location.ts
+models/ModelError.ts
+models/OperatingHours.ts
+models/SeatAvailability.ts
+models/StoreInformation.ts
+models/StoreLinks.ts
+models/index.ts
+runtime.ts

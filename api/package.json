@@ -1,0 +1,20 @@
+{
+  "name": "@cafeit/api",
+  "version": "1.0.0",
+  "description": "API contract and shared types for Cafeit platform",
+  "scripts": {
+    "generate:typescript": "openapi-typescript openapi.yaml -o generated/types.ts",
+    "generate:client": "openapi-generator-cli generate -i openapi.yaml -g typescript-fetch -o generated/client",
+    "generate:server": "openapi-generator-cli generate -i openapi.yaml -g typescript-nestjs -o generated/server",
+    "generate:all": "pnpm run generate:typescript && pnpm run generate:client && pnpm run generate:server",
+    "visualize": "swagger-cli bundle openapi.yaml -o generated/swagger.json && npx swagger-ui-serve generated/swagger.json"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^6.7.4",
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "swagger-cli": "^4.0.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
