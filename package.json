@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "api:generate": "pnpm --filter @cafeit/api run generate:all",
-    "api:visualize": "pnpm --filter @cafeit/api run visualize"
+    "api:visualize": "pnpm --filter @cafeit/api run visualize",
+    "client:dev": "pnpm --filter ./client run dev"
   }
 }

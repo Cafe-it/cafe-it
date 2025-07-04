@@ -1,0 +1,82 @@
+/* [project]/client/src/app/pretendard_190601a4.module.css [app-client] (css) */
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_Thin-s.p.2475cabc.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_ExtraLight-s.p.cb4356f3.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_Light-s.p.756c5d84.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_Regular-s.p.20703c1f.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_Medium-s.p.704a23e1.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_SemiBold-s.p.a11eebf5.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_Bold-s.p.4caed776.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_ExtraBold-s.p.ce4d1699.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: pretendard;
+  src: url("../media/Pretendard_Black-s.p.372423a3.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: pretendard Fallback;
+  src: local(Arial);
+  ascent-override: 93.76%;
+  descent-override: 23.75%;
+  line-gap-override: 0.0%;
+  size-adjust: 101.55%;
+}
+
+.pretendard_190601a4-module__iC63mW__className {
+  font-family: pretendard, pretendard Fallback;
+}
+
+.pretendard_190601a4-module__iC63mW__variable {
+  --font-pretendard: "pretendard", "pretendard Fallback";
+}
+
+/*# sourceMappingURL=client_src_app_pretendard_190601a4_module_css_f9ee138c._.single.css.map*/
