@@ -1,0 +1,23 @@
+export const META = {
+  title: "Cafeit - 실시간 카페 자리 현황 확인",
+  siteName: "Cafeit | 카페잇",
+  description: "실시간으로 카페 자리 현황을 확인하고 편리하게 이용하세요!",
+  keyword: [
+    "실시간 카페",
+    "카페 자리",
+    "카페 현황",
+    "카페잇",
+    "cafeit",
+    "카페 예약",
+    "카페 찾기",
+    "실시간 현황",
+    "카페 좌석",
+    "카페 이용",
+    "카페 정보",
+    "카페 서비스",
+  ],
+  url: "https://cafeit.com",
+  googleVerification: "CgyfsknTnwmw-3MVu_AGzdeVCqRY3d2VTrQWaCumLfQ",
+  naverVerification: "6e541c9717d6614e8ee55b0d67f4eb82bcdfd16c",
+  ogImage: "/favicon.ico",
+} as const;

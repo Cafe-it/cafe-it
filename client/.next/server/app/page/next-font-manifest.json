@@ -1,0 +1,18 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/client/src/app/page": [
+      "static/media/Pretendard_Medium-s.p.704a23e1.woff2",
+      "static/media/Pretendard_Black-s.p.372423a3.woff2",
+      "static/media/Pretendard_Bold-s.p.4caed776.woff2",
+      "static/media/Pretendard_Thin-s.p.2475cabc.woff2",
+      "static/media/Pretendard_ExtraLight-s.p.cb4356f3.woff2",
+      "static/media/Pretendard_ExtraBold-s.p.ce4d1699.woff2",
+      "static/media/Pretendard_Light-s.p.756c5d84.woff2",
+      "static/media/Pretendard_Regular-s.p.20703c1f.woff2",
+      "static/media/Pretendard_SemiBold-s.p.a11eebf5.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}
